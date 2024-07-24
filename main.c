@@ -191,18 +191,18 @@ int main() {
     randSeed = 0;
     REG_DISPCNT = DCNT_OBJ | DCNT_MODE0 | DCNT_BG0;
 
-    palettes[0] = RGB15(18, 18, 18); //background grey
-    palettes[1] = RGB15(13, 13, 13); //border grey
+    palettes[0] = RGB15(20, 20, 20); //background grey
+    palettes[1] = RGB15(15, 15, 15); //border grey
     palettes[2] = RGB15(17, 17, 17); //corner of unclicked
     palettes[3] = CLR_BLACK; //black
     palettes[4] = CLR_RED; //red
     palettes[5] = CLR_WHITE; //white
     palettes[6] = RGB15(0, 6, 31); //1 blue
-    palettes[7] = RGB15(0, 15, 0); //2 green
+    palettes[7] = RGB15(0, 18, 3); //2 green
     palettes[9] = RGB15(0, 2, 14); //4 dark blue
     palettes[10] = RGB15(15, 0, 0); //5 dark red
     palettes[11] = RGB15(6, 18, 16); //6 cyan
-    palettes[12] = RGB15(21, 21, 21); //popped grey
+    palettes[12] = RGB15(23, 23, 23); //popped grey
 
     palettes[16] = palettes[0];
     palettes[19] = palettes[6];
