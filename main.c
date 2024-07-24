@@ -44,26 +44,29 @@ void clearMenu() {
     }
 }
 
+void clearGame() {
+    for(int i = 0; i < 32 * 32; i++) {
+        gameBlock[i] = BLANK;
+    }
+}
+
 void menu() {
     REG_DISPCNT = 0x0200; //bg1 with no sprites
     drawWord(9, 2, "MINESWEEPER", 0);
     drawWord(11, 3, "FOR GBA", 0);
 
     drawWord(12, 5, "WIDTH", 0);
-    numsWithArrows(12, 6, 20, 1);
+    numsWithArrows(12, 6, boardWidth, 1);
 
 
     drawWord(11, 8, "HEIGHT", 0);
-    numsWithArrows(12, 9, 20, 0);
+    numsWithArrows(12, 9, boardHeight, 0);
 
     drawWord(12, 11, "BOMBS", 0);
-    numsWithArrows(12, 12, 50, 0);
+    numsWithArrows(12, 12, bombs, 0);
 
     drawWord(12, 15, "START", 0);
 
-    boardWidth = 20;
-    boardHeight = 20;
-    bombs = 50;
     int select = 0;
     bool gameStart = false;
 
@@ -189,6 +192,9 @@ void toggleFlag(int x, int y, u32 statusBoard[boardWidth][boardHeight]) {
 
 int main() {
     randSeed = 0;
+    boardWidth = 20;
+    boardHeight = 20;
+    bombs = 50;
     REG_DISPCNT = DCNT_OBJ | DCNT_MODE0 | DCNT_BG0;
 
     palettes[0] = RGB15(20, 20, 20); //background grey
@@ -260,6 +266,7 @@ int main() {
     while(1) {
 
         menu();
+        clearGame();
         REG_DISPCNT = 0x1100; //sprites enabled and bg0
 
         u32 bombBoard[boardWidth][boardHeight];
